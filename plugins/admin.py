@@ -30,7 +30,6 @@ class Search(Resource):
     def get(self, query):
         if query == '$$$':
             data = db.recent_movies()
-            print("title:", data[0]['title'], " sent.")
             return jsonify({"result": data[:20]})
         try:
             data = db.like(query)
