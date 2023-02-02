@@ -1,8 +1,8 @@
+from flask import jsonify, request, send_file
 from flask_restful import Resource
-from flask import jsonify, request
 from imdb import Cinemagoer
 from time import sleep
-from . import db
+from . import db, var
 
 USERNAME = "admin"
 PASSWORD = "12345678"
@@ -70,3 +70,10 @@ class CheckUser(Resource):
             return jsonify({"status": True})
         else:
             return jsonify({"status": False})
+
+
+class Backup(Resource):
+    def get(self):
+        path = var.db_path
+        return send_file(path, as_attachment=True)
+        
