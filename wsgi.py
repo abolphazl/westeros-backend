@@ -15,6 +15,7 @@ api.add_resource(admin.InsertMovie, '/insert-movie/<int:imdb_id>')
 api.add_resource(admin.Search, '/search/<string:query>')
 api.add_resource(admin.InsertEpisode, '/insert-episode')
 api.add_resource(admin.Movie, '/movie/<int:imdb_id>')
+api.add_resource(admin.CheckUser, '/check-user')
 
 # driver function
 if __name__ == "__main__":

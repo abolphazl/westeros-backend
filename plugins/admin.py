@@ -4,6 +4,9 @@ from imdb import Cinemagoer
 from time import sleep
 from . import db
 
+USERNAME = "admin"
+PASSWORD = "12345678"
+
 
 class InsertMovie(Resource):
     def get(self, imdb_id):
@@ -58,3 +61,12 @@ class DeleteEpisode(Resource):
     def get(self, mid):
         db.delete_episode(mid)
         return jsonify({"status": True, "message": "deleted successfully"})
+
+
+class CheckUser(Resource):
+    def post(self):
+        data = request.json
+        if data['password'] == PASSWORD and data['username'] == USERNAME:
+            return jsonify({"status": True})
+        else:
+            return jsonify({"status": False})
