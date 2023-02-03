@@ -1,7 +1,6 @@
 from flask import jsonify, request, send_file
 from flask_restful import Resource
 from imdb import Cinemagoer
-from time import sleep
 from . import db, var
 
 USERNAME = "admin"

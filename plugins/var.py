@@ -1,4 +1,4 @@
 
 
 # path
-db_path = "./data/westeros.db"
+db_path = "./data/westeros.json"

@@ -1,14 +1,12 @@
 from flask_restful import Resource, Api
+from plugins import admin, movies
 from flask import Flask, jsonify
 from flask_cors import CORS
-from plugins import admin
-from plugins import db
 
 # creating flask app and api object
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
-db.setup_tables()
 
 # handlers
 api.add_resource(admin.InsertMovie, '/insert-movie/<int:imdb_id>')
@@ -18,6 +16,8 @@ api.add_resource(admin.Movie, '/movie/<int:imdb_id>')
 api.add_resource(admin.DeleteEpisode, "/delete-episode/<int:mid>")
 api.add_resource(admin.CheckUser, '/check-user')
 api.add_resource(admin.Backup, '/backup')
+api.add_resource(movies.MovieInformation, '/movies')
+api.add_resource(movies.ToggleBookmark, '/toggle-bookmark')
 
 # driver function
 if __name__ == "__main__":

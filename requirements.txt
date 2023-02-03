@@ -1,3 +1,4 @@
 cinemagoer==2022.12.27
 flask-restful==0.3.9
 flask-cors==3.0.10
+tinydb==4.7.1
