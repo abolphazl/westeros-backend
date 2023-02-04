@@ -1,7 +1,12 @@
 from flask import jsonify, request
 from flask_restful import Resource
+from dotenv import load_dotenv
+from threading import Thread
 from imdb import Cinemagoer
+from pyrogram import Client
 from . import db, var
+import requests
+import os
 
 
 class MovieInformation(Resource):
@@ -30,5 +35,23 @@ class MovieInformation(Resource):
 
 class ToggleBookmark(Resource):
     def post(self):
-        data = request.json
-        db.toggle_bookmark(imdb_id=int(data["imdb_id"]), user_id=int(data["user_id"]))
+        try:
+            data = request.json
+            db.toggle_bookmark(imdb_id=int(data["imdb_id"]), user_id=int(data["user_id"]))
+        except:
+            return
+
+
+class SendFile(Resource):
+    def post(self):
+        try:
+            data = request.json
+            load_dotenv()
+
+            caption = "some caption!"
+
+            url  = f"https://api.telegram.org/bot{os.getenv('BOT_TOKEN')}/copyMessage?chat_id={data['user_id']}&from_chat_id={-1001693241710}&message_id={data['mid']}&caption={caption}"
+            requests.get(url)
+        except Exception as e:
+            print(e)
+            return

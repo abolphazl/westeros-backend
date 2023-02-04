@@ -24,6 +24,7 @@ api.add_resource(admin.CheckUser, '/check-user')
 api.add_resource(admin.Backup, '/backup')
 api.add_resource(movies.MovieInformation, '/movies')
 api.add_resource(movies.ToggleBookmark, '/toggle-bookmark')
+api.add_resource(movies.SendFile, '/send-file')
 
 # driver function
 if __name__ == "__main__":
