@@ -161,3 +161,4 @@ cython_debug/
 
 # my own
 data/
+pid.txt

@@ -6,9 +6,12 @@ from . import db, var
 
 class MovieInformation(Resource):
     def post(self):
-        data = request.json
-        is_bookmark = db.is_bookmark(imdb_id=int(data["imdb_id"]), user_id=int(data["user_id"]))
-        movie = db.get_movie(int(data["imdb_id"]))
+        try:
+            data = request.json
+            is_bookmark = db.is_bookmark(imdb_id=int(data["imdb_id"]), user_id=int(data["user_id"]))
+            movie = db.get_movie(int(data["imdb_id"]))
+        except:
+            return jsonify({"status": False})
         
         all_seasons = []
         for file in movie['episodes']:

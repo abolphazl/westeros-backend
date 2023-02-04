@@ -64,11 +64,14 @@ class DeleteEpisode(Resource):
 
 class CheckUser(Resource):
     def post(self):
-        data = request.json
-        if data['password'] == PASSWORD and data['username'] == USERNAME:
-            return jsonify({"status": True})
-        else:
-            return jsonify({"status": False})
+        try:
+            data = request.json
+            if data['password'] == PASSWORD and data['username'] == USERNAME:
+                return jsonify({"status": True})
+            else:
+                return jsonify({"status": False})
+        except:
+            return
 
 
 class Backup(Resource):

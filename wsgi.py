@@ -1,7 +1,13 @@
 from flask_restful import Resource, Api
-from plugins import admin, movies
 from flask import Flask, jsonify
+from api import admin, movies
 from flask_cors import CORS
+from plugins import env
+import os
+
+
+if not os.path.exists(env.data_path):
+    os.makedirs(env.data_path)
 
 # creating flask app and api object
 app = Flask(__name__)
