@@ -15,7 +15,7 @@ $ pip install -r requirements.txt
 # generate main session
 $ python session-gen.py main
 
-# run wsgi.py & bot.py using tmux, screen, etc...
+# run wsgi.py & bot.py using tmux or screen or etc...
 $ sudo python wsgi.py # run as sudo!
 $ python bot.py
 ```
